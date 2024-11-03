@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="container"> 
+    <h2 style="color: white;">Tu Carrito </h2>
+    {% if cart_items %}
+        <div class="row">
+            {% for item in cart_items %}
+            <div class="col-lg-4">
+                <div class="product">
+
+                    <div class="box-element">
+                        <!-- Mostrar el nombre y precio del producto -->
+                        <h6><strong>{{ item.product.name }} - Q{{ item.get_total_price|floatformat:2 }}</strong></h6>
+                        <hr>
+                        <!-- Botones para incrementar o decrementar la cantidad -->
+                        <div class="counter" style="display: inline-block; margin-right: 10px;">
+
+                            <form method="post" action="{% url 'update_cart_res' item.product.id %}" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-secondary" name="action" value="decrease">&#45;</button>
+                            </form>
+
+                            <span>{{ item.quantity }}</span>
+
+                            <form method="post" action="{% url 'update_cart_sum' item.product.id %}" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-secondary" name="action" value="increase">&#43;</button>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <form action="{% url 'clear_cart' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" style="background-color: #161616; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                Borrar carrito
+            </button>
+        </form>
+
+        <h3 class="mt-4" style="color: white;">Total: Q{{ total_price|floatformat:2 }}</h3>
+        <a href="{% url 'gracias' %}" class="btn btn-success mt-2">Finalizar compra</a>
+    {% else %}
+        <p style="color: white;">Tu carrito está vacío.</p>
+    {% endif %}
+</div>
+
+
+
+
+{% endblock content %}
+

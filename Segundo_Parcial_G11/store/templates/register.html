@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div style="background-color: #16161600; background-size: cover; background-position: center; min-height: 100vh; padding: 50px 0;">
+    <div style="text-align: center; margin-top: 100px; background-color: rgba(0, 0, 0, 0.74); padding: 30px; border-radius: 10px; max-width: 400px; margin: auto;">
+        <h2 style="color: white;">Registro de usuario</h2>
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: white;">Nombre de usuario</h4>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: white;">Contraseña</h4>
+                {{ form.password1 }}
+                {{ form.password1.errors }}
+            </div>
+            <div style="margin-bottom: 20px;">
+                <h5 style="color: white;">Confirmar contraseña</h4>
+                {{ form.password2 }}
+                {{ form.password2.errors }}
+            </div>
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: white;">Nombre completo</h4>
+                {{ form.name }}
+                {{ form.name.errors }}
+            </div>
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: white;">Número de teléfono</h4>
+                {{ form.phone_number }}
+                {{ form.phone_number.errors }}
+            </div>
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: white;">Dirección de entrega</h4>
+                {{ form.direccion }}
+                {{ form.direccion.errors }}
+            </div>
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: white;" >Correo Electrónico</h4>
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: white;">Verificación CAPTCHA</h4>
+                {{ form.captcha }}
+                {{ form.captcha.errors }}
+            </div>
+
+            <button type="submit" style="background-color: #4179b9; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px;">Registrarse</button>
+            <a href="{% url 'login' %}" style=" color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; display: inline-block; width: 100%; text-decoration: none;">Ya tengo una cuenta, volver a iniciar sesión</a>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

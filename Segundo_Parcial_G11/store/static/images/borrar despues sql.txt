@@ -1,0 +1,11 @@
+ALTER TABLE tienda_carrito
+DROP COLUMN total;
+
+SELECT * FROM tienda_carrito;
+
+ALTER TABLE tienda_carrito
+ADD COLUMN cantidad INT;
+
+ALTER TABLE tienda_carrito
+ADD COLUMN total DECIMAL(10, 2);
+

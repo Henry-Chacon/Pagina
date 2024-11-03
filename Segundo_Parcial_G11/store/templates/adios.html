@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <img src="{% static 'images/cierresesion.png' %}" alt="Bienvenida" class="welcome-image">
+</div>
+
+<div class="container">
+    <img src="{% static 'images/blanco.png' %}" alt="Despedida" class="welcome-image">
+</div>  
+
+    <div style="text-align: center; margin-top: 100px; background-color: rgba(0, 0, 0, 0.7); padding: 30px; border-radius: 10px; max-width: 400px; margin: auto;">
+
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <a href="{% url 'Tienda' %}" style="background-color: #3b3b3b; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; display: inline-block; width: 100%; text-decoration: none;">Regresar a Inicio</a>
+            <a href="{% url 'login' %}" style="margin-top: 8px; background-color: #4179b9; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; display: inline-block; width: 100%; text-decoration: none;">Iniciar sesión</a>
+        </form>
+    </div>
+
+{% endblock content %}

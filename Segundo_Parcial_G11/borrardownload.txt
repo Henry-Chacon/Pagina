@@ -1,0 +1,30 @@
+#--------
+@login_required
+def download(request):
+    cart = request.session.get('cart', {})
+    
+    if not cart:
+        return redirect('cart_detail')
+        
+    user_name = request.user.name if request.user.is_authenticated else "Anónimo"
+    content = f"Carrito de compras de {user_name}\n\n"
+
+    total_general = 0
+
+    for product_id, quantity in cart.items():
+        product = Product.objects.get(id=product_id)
+        total = product.price * quantity
+        content += f"Producto: {product.name}\n"
+        content += f"Cantidad: {quantity}\n"
+        content += f"Precio unitario: ${product.price}\n"
+        content += f"Total: ${total}\n\n"
+        total_general += total
+
+    content += f"Total general: ${total_general}"
+
+    response = HttpResponse(content, content_type='text/plain')
+    response['Content-Disposition'] = 'attachment; filename=detalles de compra.txt'
+
+    request.session['cart'] = {}
+
+    return response

@@ -1,0 +1,9 @@
+In [6]: from store.models import Product
+   ...: product_id = 6
+   ...: try:
+   ...:     product = Product.objects.get(id=product_id)
+   ...:     print(f"Producto encontrado: {product.name}")
+   ...: except Product.DoesNotExist:
+   ...:     print("El producto no existe en la base de datos.")
+   ...:
+Producto encontrado: Camisa Tommy Hillfiger

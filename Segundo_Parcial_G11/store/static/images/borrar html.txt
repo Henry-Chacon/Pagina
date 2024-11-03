@@ -1,0 +1,109 @@
+{% extends 'generales/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row justify-content-center">  <!-- Justifica el contenido al centro -->
+
+    <div class="col-lg-4">
+        <img class="thumbnail" src="{% static 'images/tommy1.png' %}">
+        <div class="box-element product">
+            <h6><strong>Product 1</strong></h6>
+            <hr>
+            <div class="counter">
+                <button class="btn btn-outline-secondary" onclick="decrement('count1')">&#9664;</button>
+                <span id="count1">0</span>
+                <button class="btn btn-outline-secondary" onclick="increment('count1')">&#9654;</button>
+            </div>
+            <br>
+            <button class="btn btn-outline-secondary add-btn">Agregar al carrito</button>
+            <a class="btn btn-outline-success" href="#">Ver</a>
+            <h4 style="display: inline-block; float: right"><strong>Q20</strong></h4>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <img class="thumbnail" src="{% static 'images/tommy2.png' %}">
+        <div class="box-element product">
+            <h6><strong>Product 2</strong></h6>
+            <hr>
+            <div class="counter">
+                <button class="btn btn-outline-secondary" onclick="decrement('count2')">&#9664;</button>
+                <span id="count2">0</span>
+                <button class="btn btn-outline-secondary" onclick="increment('count2')">&#9654;</button>
+            </div>
+            <br>
+            <button class="btn btn-outline-secondary add-btn">Agregar al carrito</button>
+            <a class="btn btn-outline-success" href="#">Ver</a>
+            <h4 style="display: inline-block; float: right"><strong>Q20</strong></h4>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <img class="thumbnail" src="{% static 'images/tommy3.png' %}">
+        <div class="box-element product">
+            <h6><strong>Product 3</strong></h6>
+            <hr>
+            <div class="counter">
+                <button class="btn btn-outline-secondary" onclick="decrement('count3')">&#9664;</button>
+                <span id="count3">0</span>
+                <button class="btn btn-outline-secondary" onclick="increment('count3')">&#9654;</button>
+            </div>
+            <br>
+            <button class="btn btn-outline-secondary add-btn">Agregar al carrito</button>
+            <a class="btn btn-outline-success" href="#">Ver</a>
+            <h4 style="display: inline-block; float: right"><strong>Q20</strong></h4>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Mantiene un conteo independiente para cada producto
+    const counts = {
+        count1: 0,
+        count2: 0,
+        count3: 0,
+    };
+
+    const min = 0;
+    const max = 10;
+
+    function increment(id) {
+        if (counts[id] < max) {
+            counts[id]++;
+            updateDisplay(id);
+            updateDatabase(counts[id]);
+        }
+    }
+
+    function decrement(id) {
+        if (counts[id] > min) {
+            counts[id]--;
+            updateDisplay(id);
+            updateDatabase(counts[id]);
+        }
+    }
+
+    function updateDisplay(id) {
+        document.getElementById(id).innerText = counts[id];
+    }
+
+    function updateDatabase(value) {
+        // Enviar el valor a un servidor para actualizar en la base de datos
+        fetch('/update_cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'  // Asegura la protección CSRF si usas Django
+            },
+            body: JSON.stringify({ itemCount: value }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+{% endblock content %}

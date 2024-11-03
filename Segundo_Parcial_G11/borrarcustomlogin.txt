@@ -1,0 +1,42 @@
+class CustomLoginView(LoginView):
+    template_name = 'login.html'
+
+    def form_valid(self, form):
+        remember_me = self.request.POST.get('remember_me')
+        if not remember_me:
+            self.request.session.set_expiry(0)
+        else:
+            self.request.session.set_expiry(1209600)
+        
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+
+        # Verifica si el usuario existe
+        user = authenticate(username=username, password=password)
+        
+        if not username:  # Campo de usuario vacío
+            messages.error(self.request, "Por favor, introduce un nombre de usuario.")
+        elif not password:  # Campo de contraseña vacío
+            messages.error(self.request, "Por favor, introduce una contraseña.")
+        elif user is None:  # El usuario no existe o la contraseña es incorrecta
+            if not self.get_user_exists(username):  # Usuario no encontrado
+                messages.error(self.request, "El usuario no existe.")
+            else:  # Si el usuario existe pero la contraseña es incorrecta
+                messages.error(self.request, "Contraseña incorrecta.")
+        else:  # Otros errores generales
+            messages.error(self.request, "Error desconocido. Por favor, intenta nuevamente.")
+
+        return self.render_to_response(self.get_context_data(form=form))
+
+    def get_user_exists(self, username):
+        """
+        Comprueba si el usuario existe sin verificar la contraseña.
+        """
+        try:
+            CustomUser.objects.get(username=username)  # Usa el modelo de usuario personalizado
+            return True
+        except CustomUser.DoesNotExist:
+            return False

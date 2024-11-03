@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div style=""background-color: #161616; background-size: cover; background-position: center; min-height: 100vh; padding: 50px 0;">
+    <div style="text-align: center; margin-top: 100px; background-color: rgba(0, 0, 0, 0.7); padding: 30px; border-radius: 10px; max-width: 400px; margin: auto;">
+        <h2 style="color: white;">Registro</h2>
+        <form>
+            <div style="margin-bottom: 20px;">
+                <input type="text" name="username" placeholder="Nombre de Usuario" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"/>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <input type="password" name="password" placeholder="Contraseña" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"/>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <input type="password" name="confirm_password" placeholder="Confirmar Contraseña" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"/>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <input type="text" name="name" placeholder="Nombre" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"/>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <input type="tel" name="phone" placeholder="Número de Teléfono" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"/>
+            </div>
+            <button type="submit" style="background-color: #161616; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px;">Regístrate</button>
+            <a href="http://127.0.0.1:8000/login" style="color: white; text-decoration: none; display: block; margin-top: 10px;">Ya tengo una cuenta, pero olvidé mi contraseña</a>
+        </form>
+    </div>
+</div>
+{% endblock content %}

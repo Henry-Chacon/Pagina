@@ -1,0 +1,351 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+{% if request.user.is_employee %}
+<p style="color: white;">Has iniciado sesión como empleado.</p>
+<a href="{% url 'empleado' %}" style="background-color: #4179b9; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; display: inline-block; width: 100%; text-decoration: none;">Ir a Empleados</a>
+
+{% else %}
+
+<div class="container">
+    <img src="{% static 'images/bienvenida.png' %}" alt="Bienvenida" class="welcome-image">
+</div>
+<br/>
+
+<div class="row">
+        <!-- ----------------------------------Tommy 1 ----------------------------- -->
+    <div class="col-lg-4">
+        <div class="product" id="product1">
+            <img class="thumbnail" src="{% static 'images/tommy1.png' %}">
+            <div class="box-element">
+                <h6 class="add-btn"><strong> Camisa Tommy Hilfiger Q150</strong></h6>
+                <hr>
+
+                <div style="display: inline-block; margin-right: 10px;">
+                    <form action="{% url 'add_to_cart' 9 %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="submit" style="background-color: #161616; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                            Añadir al carrito
+                        </button>
+                    </form>
+                </div>
+                
+                <div style="display: inline-block;">
+                    <form action="{% url 'tommy1' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" style="background-color: #1a9238; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                            Ver Producto
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ----------------------------------Tommy 2 ----------------------------- -->
+    <div class="col-lg-4">
+        <div class="product" id="product2">
+            <img class="thumbnail" src="{% static 'images/tommy2.png' %}">
+            <div class="box-element">
+                <h6 class="add-btn"><strong>Hoodie Tommy Hilfiger Q150</strong></h6>
+                <hr>
+
+                <div style="display: inline-block; margin-right: 10px;">
+                    <form action="{% url 'add_to_cart' 10 %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="submit" style="background-color: #161616; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                            Añadir al carrito
+                        </button>
+                    </form>
+                </div>
+                
+                <div style="display: inline-block;">
+                    <form action="{% url 'tommy2' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" style="background-color: #1a9238; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                            Ver Producto
+                        </button>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ----------------------------------Tommy 3 ----------------------------- -->
+    <div class="col-lg-4">
+        <div class="product" id="product2">
+            <img class="thumbnail" src="{% static 'images/tommy3.png' %}">
+            <div class="box-element">
+                <h6 class="add-btn"><strong> Sudadera Tommy Hilfiger Q175</strong></h6>
+                <hr>
+    
+                <div style="display: inline-block; margin-right: 10px;">
+                    <form action="{% url 'add_to_cart' 11 %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="submit" style="background-color: #161616; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                            Añadir al carrito
+                        </button>
+                    </form>
+                </div>
+                    
+                <div style="display: inline-block;">
+                        <form action="{% url 'tommy3' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" style="background-color: #1a9238; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                            Ver Producto
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="row">
+    <!-- ---------------------------------- Boss 1 ----------------------------- -->
+    <div class="col-lg-4">
+        <div class="product" id="product4">
+            <img class="thumbnail" src="{% static 'images/boss1.png' %}">
+            <div class="box-element">
+                <h6 class="add-btn"><strong> Camisa Hugo Boss Q160</strong></h6>
+                <hr>
+
+                <div style="display: inline-block; margin-right: 10px;">
+                    <form action="{% url 'add_to_cart' 14 %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="submit" style="background-color: #161616; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                            Añadir al carrito
+                        </button>
+                    </form>
+                </div>
+                
+                <div style="display: inline-block;">
+                    <form action="{% url 'boss1' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" style="background-color: #1a9238; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                            Ver Producto
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------- Boss 2 ----------------------------- -->
+    <div class="col-lg-4">
+        <div class="product" id="product5">
+            <img class="thumbnail" src="{% static 'images/boss2.png' %}">
+            <div class="box-element">
+                <h6 class="add-btn"><strong>Sueter Hugo Boss Q175</strong></h6>
+                <hr>
+
+                <div style="display: inline-block; margin-right: 10px;">
+                    <form action="{% url 'add_to_cart' 13 %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="submit" style="background-color: #161616; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                            Añadir al carrito
+                        </button>
+                    </form>
+                </div>
+                
+                <div style="display: inline-block;">
+                    <form action="{% url 'boss2' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" style="background-color: #1a9238; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                            Ver Producto
+                        </button>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------- Boss 3 ----------------------------- -->
+    <div class="col-lg-4">
+        <div class="product" id="product6">
+            <img class="thumbnail" src="{% static 'images/boss3.png' %}">
+            <div class="box-element">
+                <h6 class="add-btn"><strong> Camisa Polo Hugo Boss Q135</strong></h6>
+                <hr>
+
+                <div style="display: inline-block; margin-right: 10px;">
+                    <form action="{% url 'add_to_cart' 15 %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="submit" style="background-color: #161616; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                            Añadir al carrito
+                        </button>
+                    </form>
+                </div>
+                    
+                <div style="display: inline-block;">
+                        <form action="{% url 'boss3' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" style="background-color: #1a9238; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                            Ver Producto
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="row">
+    <!-- ---------------------------------- Lauren 1 ----------------------------- -->
+<div class="col-lg-4">
+    <div class="product" id="product1">
+        <img class="thumbnail" src="{% static 'images/lauren1.png' %}">
+        <div class="box-element">
+            <h6 class="add-btn"><strong> Polo Ralph Lauren Roja Q150</strong></h6>
+            <hr>
+
+            <div style="display: inline-block; margin-right: 10px;">
+                <form action="{% url 'add_to_cart' 16 %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <button type="submit" style="background-color: #161616; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                        Añadir al carrito
+                    </button>
+                </form>
+            </div>
+            
+            <div style="display: inline-block;">
+                <form action="{% url 'lauren1' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" style="background-color: #1a9238; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                        Ver Producto
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ---------------------------------- Lauren 2 ----------------------------- -->
+<div class="col-lg-4">
+    <div class="product" id="product2">
+        <img class="thumbnail" src="{% static 'images/lauren2.png' %}">
+        <div class="box-element">
+            <h6 class="add-btn"><strong>Polo Ralph Lauren Azul Q150</strong></h6>
+            <hr>
+
+            <div style="display: inline-block; margin-right: 10px;">
+                <form action="{% url 'add_to_cart' 17 %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <button type="submit" style="background-color: #161616; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                        Añadir al carrito
+                    </button>
+                </form>
+            </div>
+            
+            <div style="display: inline-block;">
+                <form action="{% url 'lauren2' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" style="background-color: #1a9238; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                        Ver Producto
+                    </button>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- ---------------------------------- Lauren 3 ----------------------------- -->
+<div class="col-lg-4">
+    <div class="product" id="product2">
+        <img class="thumbnail" src="{% static 'images/lauren3.png' %}">
+        <div class="box-element">
+            <h6 class="add-btn"><strong> Polo Ralph Lauren Blanca Q150</strong></h6>
+            <hr>
+
+            <div style="display: inline-block; margin-right: 10px;">
+                <form action="{% url 'add_to_cart' 18 %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <button type="submit" style="background-color: #161616; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                        Añadir al carrito
+                    </button>
+                </form>
+            </div>
+                
+            <div style="display: inline-block;">
+                    <form action="{% url 'lauren3' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" style="background-color: #1a9238; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+                        Ver Producto
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+<div class="container">
+    <img src="{% static 'images/bienvenida2.png' %}" alt="Bienvenida" class="welcome-image">
+</div>
+<br/>
+
+
+<script>
+    let counts = {
+        hil1: parseInt(localStorage.getItem('hil1')) || 0,
+        hil2: parseInt(localStorage.getItem('hil2')) || 0,
+    };
+    const min = 0;
+    const max = 10;
+
+    function increment(product) {
+        if (counts[product] < max) {
+            counts[product]++;
+            updateDisplay(product);
+            document.getElementById('quantity-' + product).value = counts[product]; // Actualiza el valor del input
+        }
+    }
+
+    function decrement(product) {
+        if (counts[product] > min) {
+            counts[product]--;
+            updateDisplay(product);
+            document.getElementById('quantity-' + product).value = counts[product]; // Actualiza el valor del input
+        }
+    }
+
+    function updateDisplay(product) {
+        document.getElementById("item-count" + product.slice(3)).innerText = counts[product];
+        localStorage.setItem(product, counts[product]);  // Guarda el conteo en localStorage
+    }
+</script>
+
+{% endif %}
+{% endblock content %}

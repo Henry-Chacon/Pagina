@@ -1,0 +1,15 @@
+Pedido de Juan Perez
+
+Dirección de entrega 8va calle zona 2 Guatemala
+
+Producto: Hoodie Tommy Hillfiger
+Cantidad: 1
+Precio unitario: Q150.00
+Total: Q150.00
+
+Producto: Polo Ralph Lauren Blanca
+Cantidad: 1
+Precio unitario: Q150.00
+Total: Q150.00
+
+Total general: Q300.00

@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div style="text-align: center; margin-top: 100px; background-color: rgba(0, 0, 0, 0.7); padding: 30px; border-radius: 10px; max-width: 400px; margin: auto;">
+    <h2 style="color: white;">Recuperar mi cuenta</h2>
+    <form method="POST" action="{% url 'recovery' %}">
+        {% csrf_token %}
+
+        <label for="username" style="color: white;">Nombre de usuario:</label>
+        <input type="text" name="username" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 20px;"/>
+
+        <div style="margin-bottom: 20px; text-align: left;">
+            <label style="color: white;">Selecciona el motivo de tu solicitud:</label><br>
+            <input type="radio" id="forgot_password" name="request_type" value="forgot_password" checked>
+            <label for="forgot_password" style="color: white;">Olvidé mi contraseña</label><br>
+
+            <input type="radio" id="account_locked" name="request_type" value="account_locked">
+            <label for="account_locked" style="color: white;">Mi usuario está bloqueado</label><br>
+
+            <input type="radio" id="other" name="request_type" value="other">
+            <label for="other" style="color: white;">Otro</label>
+        </div>
+
+        <label for="request_message" style="color: white;">Mensaje a la administración de Horizon Wear:</label><br>
+        <textarea name="request_message" rows="4" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 20px;"></textarea>
+
+        <button type="submit" style="background-color: #4179b9; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px;">Enviar solicitud</button>
+        
+        <a href="{% url 'login' %}" style="background-color: #3b3b3b; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; display: inline-block; width: 100%; text-decoration: none;">Página de inicio de sesión</a>
+    </form>
+</div>
+
+{% endblock content %}
